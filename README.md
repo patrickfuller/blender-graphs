@@ -11,7 +11,12 @@ sh draw_network.sh *adjacency_list*
 ```
 
 where *adjacency_list* is either a file or a string containing a json adjacency
-list of the format `[["source_1", "target_1"], ["source_2", "target_2"], ...]`.
+list of the format
+
+```json
+[["source_1", "target_1"], ["source_2", "target_2"], ...]
+```
+
 The node identifiers can be anything, so long as they are self consistent.
 For example,
 
@@ -19,8 +24,12 @@ For example,
 sh draw_network.sh "[[1,2],[2,3],[3,4]]"
 ```
 
-will open blender with a 3D visualization of this network. For more control,
-you can break the process into two parts. Running
+will open blender with a 3D visualization of this network.
+
+Advanced Usage
+--------------
+
+For more control, you can break the process into two parts. Running
 
 ```bash
 python generate_network.py "[[1,2],[2,3],[3,4]]" > network.json
@@ -75,14 +84,14 @@ access to some additional network-generation parameters, ie.
 python generate_network.py --edge-length 15 --separation 3 --density 60 --concentric --2D "[[1,2],[2,3],[3,4]]"
 ```
 
-`--edge-length` is the maximum length of a network edge
-`--separation` is the minimum distance between any two nodes
-`--density` attempts to compact the nodes spherically if non-zero
-`--concentric` places the root node at the center of the network
-`--2D` confines the network layout to two dimensions
+ * `--edge-length` is the maximum length of a network edge
+ * `--separation` is the minimum distance between any two nodes
+ * `--density` attempts to compact the nodes spherically if non-zero
+ * `--concentric` places the root node at the center of the network
+ * `--2D` confines the network layout to two dimensions
 
-`network_to_blender.py` can also be easily edited to change node shapes and
-sizes or to disable edge arrows.
+The `network_to_blender.py` script can also be easily edited to change node
+shapes and sizes or to disable edge arrows.
 
 Samples
 -------
