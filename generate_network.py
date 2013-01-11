@@ -30,7 +30,7 @@ def random_layout(edges, edge_length=20, separation=10, density=0,
 
     # Manually place all root nodes.
     # Note: this is not ideal for the case of multiple roots
-    nodes = {root: {"location": (separation * i,) * (3 if is_3d else 2)}
+    nodes = {root: {"location": [separation * i] + [0] * (2 if is_3d else 1)}
              for i, root in enumerate(roots)}
 
     # A little heuristic to confine the network
@@ -61,7 +61,7 @@ def random_layout(edges, edge_length=20, separation=10, density=0,
                 colliding = False
 
                 # If the number of attempts is getting crazy, error
-                if number_of_attempts > 10000:
+                if number_of_attempts > 100000:
                     raise Exception(("Cannot place all nodes! Consider either "
                                      "increasing `edge_length` or decreasing "
                                      "`separation`."))
@@ -85,6 +85,12 @@ def random_layout(edges, edge_length=20, separation=10, density=0,
 
             # When non-colliding coordinate is found, save
             nodes[edge["source"]] = {"location": location}
+
+    # Even if it's 2D, let's specify three dimensions
+    if not is_3d:
+        for node in nodes.values():
+            node["location"] += [0]
+
     return nodes
 
 
@@ -106,20 +112,20 @@ if __name__ == "__main__":
         edges = json.loads(sys.argv[-1])
 
     # Convert to internal representation
-    edges = [{"source": s, "target": t} for s, t in edges]
+    edges = [{"source": str(s), "target": str(t)} for s, t in edges]
 
     # Handle additional args
     kwargs = {"edge_length": 20, "separation": 5, "density": 0,
               "is_concentric": False, "is_3d": True}
     for i, arg in enumerate(sys.argv):
         if arg == "--edge-length":
-            kwargs["edge_length"] = sys.argv[i + 1]
+            kwargs["edge_length"] = float(sys.argv[i + 1])
         elif arg == "--separation":
-            kwargs["separation"] = sys.argv[i + 1]
+            kwargs["separation"] = float(sys.argv[i + 1])
         elif arg == "--density":
-            kwargs["density"] = sys.argv[i + 1]
+            kwargs["density"] = float(sys.argv[i + 1])
         elif arg == "--concentric":
-            kwargs["concentric"] = True
+            kwargs["is_concentric"] = True
         elif arg == "--2D":
             kwargs["is_3d"] = False
 

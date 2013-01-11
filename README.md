@@ -26,6 +26,23 @@ sh draw_network.sh "[[1,2],[2,3],[3,4]]"
 
 will open blender with a 3D visualization of this network.
 
+
+Samples
+-------
+
+####Visualization produced by above example
+![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/basic_network.png)
+
+####Binary tree, 2D random layout
+![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/binary_tree.png)
+
+####Les Misérables character data (copied from (this d3 example)[http://bl.ocks.org/4062045])
+![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/d3_concentric.png)
+
+####Les Misérables character data, spherically confined
+![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/d3_spherically_confined.png)
+
+
 Advanced Usage
 --------------
 
@@ -93,7 +110,3 @@ python generate_network.py --edge-length 15 --separation 3 --density 60 --concen
 The `network_to_blender.py` script can also be easily edited to change node
 shapes and sizes or to disable edge arrows.
 
-Samples
--------
-
-####TODO add samples

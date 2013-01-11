@@ -3,7 +3,7 @@
 python generate_network.py $1 > network.json
 
 # Run in blender
-if [[ $(uname -s) == "Darwin" ]]; then
+if [ $(uname -s) == "Darwin" ]; then
     # Mac version, assumes no blender link
     /Applications/blender.app/Contents/MacOS/./blender network.blend -P network_to_blender.py
 else
