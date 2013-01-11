@@ -38,9 +38,6 @@ Samples
 ####Les Misérables character data (data copied from [this d3 example](http://bl.ocks.org/4062045))
 ![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/les_miserables.png)
 
-####Les Misérables character data, spherically confined
-![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/d3_spherically_confined.png)
-
 ####Binary red-black(-ish) tree
 ![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/red_black_tree_3d.png)
 
