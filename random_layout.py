@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 """
-Methods to generate network coordinates.
+Generates network coordinates using a brute-force approach.
 """
 from random import random, randint, sample
 import re
 
 
-def random_layout(edges, edge_length=20, separation=10, density=0,
-                  is_concentric=False, is_3d=True):
+def run(edges, edge_length=20, separation=10, density=0, is_concentric=False,
+        is_3d=True):
     """Finds non-colliding coordinates for network nodes through brute force.
 
     Parameters
@@ -130,7 +130,7 @@ if __name__ == "__main__":
             kwargs["is_3d"] = False
 
     # Generate nodes
-    nodes = random_layout(edges, **kwargs)
+    nodes = run(edges, **kwargs)
 
     # Convert to json and print
     print json_formatter.dumps({"edges": edges, "nodes": nodes})

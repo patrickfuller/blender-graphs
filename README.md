@@ -6,6 +6,8 @@ Produces visualizations of network data.
 Usage
 -----
 
+To use standard parameters for everything, simply run
+
 ```bash
 sh draw_network.sh *adjacency_list*
 ```
@@ -21,7 +23,7 @@ The node identifiers can be anything, so long as they are self consistent.
 For example,
 
 ```bash
-sh draw_network.sh "[[1,2],[2,3],[3,4]]"
+sh draw_network.sh "[[1,2],[2,3],[3,4],[4,1],[2,5],[5,4]]"
 ```
 
 will open blender with a 3D visualization of this network.
@@ -31,16 +33,19 @@ Samples
 -------
 
 ####Visualization produced by above example
-![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/basic_network.png)
+![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/trigonal_wheel.png)
 
-####Binary tree, 2D random layout
-![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/binary_tree.png)
-
-####Les Misérables character data (copied from [this d3 example](http://bl.ocks.org/4062045))
-![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/d3_concentric.png)
+####Les Misérables character data (data copied from [this d3 example](http://bl.ocks.org/4062045))
+![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/les_miserables.png)
 
 ####Les Misérables character data, spherically confined
 ![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/d3_spherically_confined.png)
+
+####Binary red-black(-ish) tree
+![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/red_black_tree_3d.png)
+
+####Binary tree, confined to 2D
+![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/red_black_tree_2d.png)
 
 
 Advanced Usage
@@ -49,7 +54,10 @@ Advanced Usage
 For more control, you can break the process into two parts. Running
 
 ```bash
-python generate_network.py "[[1,2],[2,3],[3,4]]" > network.json
+# Run this for force-directed layouts, or
+python force_directed_layout.py "[[1,2],[2,3],[3,4]]" > network.json
+# this for random layouts
+python random_layout.py "[[1,2],[2,3],[3,4]]" > network.json
 ```
 
 produces a `network.json` file containing
@@ -94,11 +102,20 @@ run on any `network.json` file with this format. Then, run
 blender network.blend -P network_to_blender.py
 ```
 
-which will open a blender gui with the chosen network. Splitting gives you
-access to some additional network-generation parameters, ie.
+which will open a blender gui with the chosen network.
+
+Splitting gives you access to some additional network-generation parameters.
 
 ```bash
-python generate_network.py --edge-length 15 --separation 3 --density 60 --concentric --2D "[[1,2],[2,3],[3,4]]"
+python force_directed_layout.py --force-strength 10 --2D "[[1,2],[2,3],[3,4]]"
+```
+
+ * `--force-strength` determines the separation between nodes
+ * `--2D` confines the network layout to two dimensions
+
+
+```bash
+python random_layout.py --edge-length 15 --separation 3 --density 60 --concentric --2D "[[1,2],[2,3],[3,4]]"
 ```
 
  * `--edge-length` is the maximum length of a network edge
@@ -108,5 +125,5 @@ python generate_network.py --edge-length 15 --separation 3 --density 60 --concen
  * `--2D` confines the network layout to two dimensions
 
 The `network_to_blender.py` script can also be easily edited to change node
-shapes and sizes or to disable edge arrows.
+shapes, sizes, and colors, or to disable edge arrows (it's a short script!).
 

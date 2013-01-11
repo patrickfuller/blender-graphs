@@ -36,8 +36,8 @@ for key, value in colors.items():
     # Transparency parameters
     bpy.data.materials[key].use_transparency = True
     bpy.data.materials[key].transparency_method = "RAYTRACE"
-    bpy.data.materials[key].alpha = 0.1 if key == "clear" else 0.9
-    bpy.data.materials[key].raytrace_transparency.fresnel = 0.5
+    bpy.data.materials[key].alpha = 0.1 if key == "clear" else 0.95
+    bpy.data.materials[key].raytrace_transparency.fresnel = 0.1
     bpy.data.materials[key].raytrace_transparency.ior = 1.15
 
 
