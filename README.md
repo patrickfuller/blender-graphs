@@ -41,9 +41,8 @@ Samples
 ####Binary red-black(-ish) tree
 ![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/red_black_tree_3d.png)
 
-####Binary tree, confined to 2D
-![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/red_black_tree_2d.png)
-
+####Breadth-first and depth-first searches on 2D network (Freestyle render)
+![](http://www.patrick-fuller.com/wp-content/uploads/2013/02/queries.png)
 
 Advanced Usage
 --------------
