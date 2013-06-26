@@ -63,8 +63,8 @@ def draw_network(network, edge_thickness=0.25, node_size=3, directed=True):
     # Draw nodes
     for key, node in network["nodes"].items():
 
-        # Coloring rule for chemical nodes. Edit this to suit your needs.
-        col = choice(list(colors.keys()))
+        # Coloring rule for nodes. Edit this to suit your needs!
+        col = node.get("color", choice(list(colors.keys())))
 
         # Copy mesh primitive and edit to make node
         # (You can change the shape of drawn nodes here)

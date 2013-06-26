@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """
 Generates network coordinates using a force-directed layout.
 """
@@ -62,7 +61,6 @@ def run(edges, iterations=1000, force_strength=5.0, dampening=0.01,
 
 def _coulomb(n1, n2, k, r):
     """Calculates Coulomb forces and updates node data."""
-
     # Get relevant positional data
     delta = [x2 - x1 for x1, x2 in zip(n1["velocity"], n2["velocity"])]
     distance = sqrt(sum(d ** 2 for d in delta))

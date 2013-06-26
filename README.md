@@ -1,7 +1,24 @@
-Networks in Blender
-============================
+Graphs in Blender
+=================
 
-Produces visualizations of network data.
+Produces high-quality 3D visualizations of network data.
+
+######For interactive 3D graph visualization, check out the [igraph](https://github.com/patrickfuller/igraph) project.
+
+Samples
+-------
+
+####Les Misérables character data (data copied from [this d3 example](http://bl.ocks.org/4062045))
+![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/les_miserables.png)
+
+####Binary red-black(-ish) tree
+![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/red_black_tree_3d.png)
+
+####Breadth-first and depth-first searches on 2D network (Freestyle render)
+![](http://www.patrick-fuller.com/wp-content/uploads/2013/02/queries.png)
+
+####Pinwheel
+![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/trigonal_wheel.png)
 
 Usage
 -----
@@ -26,23 +43,7 @@ For example,
 sh draw_network.sh "[[1,2],[2,3],[3,4],[4,1],[2,5],[5,4]]"
 ```
 
-will open blender with a 3D visualization of this network.
-
-
-Samples
--------
-
-####Visualization produced by above example
-![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/trigonal_wheel.png)
-
-####Les Misérables character data (data copied from [this d3 example](http://bl.ocks.org/4062045))
-![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/les_miserables.png)
-
-####Binary red-black(-ish) tree
-![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/red_black_tree_3d.png)
-
-####Breadth-first and depth-first searches on 2D network (Freestyle render)
-![](http://www.patrick-fuller.com/wp-content/uploads/2013/02/queries.png)
+will open blender with a 3D visualization of this network (see the "pinwheel" sample).
 
 Advanced Usage
 --------------
@@ -50,10 +51,7 @@ Advanced Usage
 For more control, you can break the process into two parts. Running
 
 ```bash
-# Run this for force-directed layouts, or
 python force_directed_layout.py "[[1,2],[2,3],[3,4]]" > network.json
-# this for random layouts
-python random_layout.py "[[1,2],[2,3],[3,4]]" > network.json
 ```
 
 produces a `network.json` file containing
@@ -61,46 +59,56 @@ produces a `network.json` file containing
 ```json
 {
     "edges": [
-        {
-            "source": 1, 
-            "target": 2
-        }, 
-        {
-            "source": 2, 
-            "target": 3
-        }, 
-        {
-            "source": 3, 
-            "target": 4
-        }
-    ], 
+        { "source": "1", "target": "2" },
+        { "source": "2", "target": "3" },
+        { "source": "3", "target": "4" }
+    ],
     "nodes": {
-        "1": {
-            "location": [ 9.339, -17.667, -2.138 ]
-        }, 
-        "2": {
-            "location": [ 8.877, -7.235, -10.665 ]
-        }, 
-        "3": {
-            "location": [ 3.765, -0.434, -19.326 ]
-        }, 
-        "4": {
-            "location": [ 0, 0, 0 ]
-        }
+        "1": { "location": [ -3.290, -6.258, -8.930 ] },
+        "2": { "location": [ -1.115, -2.167, -3.103 ] },
+        "3": { "location": [ 1.188, 2.173, 3.096 ] },
+        "4": { "location": [ 3.348, 6.252, 8.937 ] }
     }
 }
 ```
 
 If you want to run your own location-generating code, the Blender script will
-run on any `network.json` file with this format. Then, run
+run on any `network.json` file with this format (Note: make sure the file
+is called "network.json"!). For some control of colors, you can specify a few
+common options directly in the .json by specifying a `"color"` property for each
+node. For example, you can edit the above to:
 
-```bash
-blender network.blend -P network_to_blender.py
+```json
+{
+    "edges": [
+        { "source": "1", "target": "2" },
+        { "source": "2", "target": "3" },
+        { "source": "3", "target": "4" }
+    ],
+    "nodes": {
+        "1": { "location": [ -3.290, -6.258, -8.930 ], "color": "red" },
+        "2": { "location": [ -1.115, -2.167, -3.103 ], "color": "gray" },
+        "3": { "location": [ 1.188, 2.173, 3.096 ], "color": "blue" },
+        "4": { "location": [ 3.348, 6.252, 8.937 ], "color": "purple" }
+    }
+}
 ```
 
-which will open a blender gui with the chosen network.
+If color is not specified, random colors will be chosen. For more control, open
+the `network_to_blender.py` file directly and edit this logic yourself. It's a
+very short script, so you should have no problem editing it. The `network_to_blender.py`
+script can also be easily edited to change node shapes and sizes, or to disable edge arrows.
 
-Splitting gives you access to some additional network-generation parameters.
+Once you're happy with your coloring, run
+
+```bash
+blender -P network_to_blender.py
+```
+
+which will open a blender gui with the chosen graph.
+
+Splitting this process into two commands gives you access to some additional
+graph-generation parameters.
 
 ```bash
 python force_directed_layout.py --force-strength 10 --2D "[[1,2],[2,3],[3,4]]"
@@ -109,6 +117,8 @@ python force_directed_layout.py --force-strength 10 --2D "[[1,2],[2,3],[3,4]]"
  * `--force-strength` determines the separation between nodes
  * `--2D` confines the network layout to two dimensions
 
+There is also a random layout, which is a useful starting point in cases where you
+want to create your own layout for artistic reasons.
 
 ```bash
 python random_layout.py --edge-length 15 --separation 3 --density 60 --concentric --2D "[[1,2],[2,3],[3,4]]"
@@ -119,7 +129,4 @@ python random_layout.py --edge-length 15 --separation 3 --density 60 --concentri
  * `--density` attempts to compact the nodes spherically if non-zero
  * `--concentric` places the root node at the center of the network
  * `--2D` confines the network layout to two dimensions
-
-The `network_to_blender.py` script can also be easily edited to change node
-shapes, sizes, and colors, or to disable edge arrows (it's a short script!).
 
