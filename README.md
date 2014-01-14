@@ -5,21 +5,6 @@ Produces high-quality 3D visualizations of network data.
 
 ######For interactive 3D graph visualization, check out the [igraph](https://github.com/patrickfuller/igraph) project.
 
-Samples
--------
-
-####Les Misérables character data (data copied from [this d3 example](http://bl.ocks.org/4062045))
-![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/les_miserables.png)
-
-####Binary red-black(-ish) tree
-![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/red_black_tree_3d.png)
-
-####Breadth-first and depth-first searches on 2D network (Freestyle render)
-![](http://www.patrick-fuller.com/wp-content/uploads/2013/02/queries.png)
-
-####Pinwheel
-![](http://www.patrick-fuller.com/wp-content/uploads/2013/01/trigonal_wheel.png)
-
 Usage
 -----
 
