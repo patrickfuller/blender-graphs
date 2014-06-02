@@ -5,6 +5,17 @@ Produces high-quality 3D visualizations of network data.
 
 ######For interactive 3D graph visualization, check out the [igraph](https://github.com/patrickfuller/igraph) project.
 
+Examples
+--------
+
+**Quinoline reaction pathway in a flask**
+
+![](http://i.imgur.com/gRpBs9X.png)
+
+**Breadth-first search depiction**
+
+![](http://i.imgur.com/Ll0AMBU.png)
+
 Usage
 -----
 
