@@ -113,8 +113,8 @@ python force_directed_layout.py --force-strength 10 --2D "[[1,2],[2,3],[3,4]]"
  * `--force-strength` determines the separation between nodes
  * `--2D` confines the network layout to two dimensions
 
-There is also a random layout, which is a useful starting point in cases where you
-want to create your own layout for artistic reasons.
+Random layout is a useful starting point in cases where you
+want to create your own layout for artistic reasons. 
 
 ```bash
 python random_layout.py --edge-length 15 --separation 3 --density 60 --concentric --2D "[[1,2],[2,3],[3,4]]"
@@ -126,3 +126,12 @@ python random_layout.py --edge-length 15 --separation 3 --density 60 --concentri
  * `--concentric` places the root node at the center of the network
  * `--2D` confines the network layout to two dimensions
 
+Layered layout will arrange the network according to distance from a designated node. In this example, the E. coli metabolic network is visualized with glucose at the top:
+
+![](http://i.imgur.com/csMI56p.png)
+
+See the included code and example to utilize this layout. The example using the provided shell script.
+
+```bash
+sh draw_ecoli_metabolism.sh
+```
