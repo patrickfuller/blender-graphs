@@ -128,7 +128,7 @@ python random_layout.py --edge-length 15 --separation 3 --density 60 --concentri
 
 Layered layout will arrange the network according to distance from a designated node. In this example, the E. coli metabolic network is visualized with glucose at the top:
 
-![](http://i.imgur.com/csMI56p.png)
+![](http://i.imgur.com/csMl56p.png)
 
 See the included code and example to utilize this layout. The example using the provided shell script.
 
