@@ -135,3 +135,7 @@ See the included code and example to utilize this layout. The example using the 
 ```bash
 sh draw_ecoli_metabolism.sh
 ```
+
+Use this to make dynamic metabolism videos:
+
+[![ScreenShot](http://i.imgur.com/POJlWOK.png)](https://vimeo.com/144331820)
