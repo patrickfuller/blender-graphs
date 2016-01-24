@@ -126,16 +126,4 @@ python random_layout.py --edge-length 15 --separation 3 --density 60 --concentri
  * `--concentric` places the root node at the center of the network
  * `--2D` confines the network layout to two dimensions
 
-Layered layout will arrange the network according to distance from a designated node. In this example, the E. coli metabolic network is visualized with glucose at the top:
-
-![](http://i.imgur.com/csMl56p.png)
-
-See the included code and example to utilize this layout. The example using the provided shell script.
-
-```bash
-sh draw_ecoli_metabolism.sh
-```
-
-Use this to make dynamic metabolism videos:
-
-[![ScreenShot](http://i.imgur.com/POJlWOK.png)](https://vimeo.com/144331820)
+Layered layout will arrange the network according to distance from a designated node. See the [subfolder](./ecoli-metabolism-example/) for usage. 
