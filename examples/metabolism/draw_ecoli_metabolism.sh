@@ -1,8 +1,8 @@
 # Generate network json from connectivity file. 219 is the glucose node. Layering a network with glucose at the top.
 python ../layered_layout.py 219 connectivity.json > networkPreColor.json
 
-#Color the network according to KEGG categorization
-python ../color_network.py networkPreColor.json > network.json
+# Color the network according to KEGG categorization
+python color_network.py networkPreColor.json > network.json
 
 # Run in blender
 if [ $(uname -s) == "Darwin" ]; then

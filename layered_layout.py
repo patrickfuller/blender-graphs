@@ -10,8 +10,8 @@ the starting layer (layer 0). Nodes are arranged by their distance
 from this starting node.
 
 January 2, 2015
-
 """
+
 from __future__ import print_function
 
 from random import uniform
@@ -25,14 +25,13 @@ import json_formatter
 
 
 def pol2cart(rho, phi):
-    # converts radial coordinates to cartesian
-    x = rho * np.cos(phi)
-    y = rho * np.sin(phi)
-    return [x, y]
+    """Converts radial coordinates to cartesian."""
+    return [rho * np.cos(phi), rho * np.sin(phi)]
 
 
-def runForcing(edges, nodes, iterations=1000, force_strength=5.0,
-               dampening=0.05, max_velocity=2.0, max_distance=50, is_3d=False):
+def run_forcing(edges, nodes, iterations=1000, force_strength=5.0,
+                dampening=0.05, max_velocity=2.0, max_distance=50,
+                is_3d=False):
     """Runs a force-directed-layout algorithm on the input graph.
 
     iterations - Number of FDL iterations to run in coordinate generation
@@ -92,10 +91,6 @@ def layer(edges, available_nodes, start_node="1", depth=0, xycoor=[0.0, 0.0],
         they are arrange radially from the parent.
     If running the spacing algorithm, ultimately this will not matter too much.
     """
-
-    # Convert to a data-storing object and initialize some values
-    d = 3 if is_3d else 2
-
     # initialize the locations and convert the nodes to a dictionary of
     # dictionaries
     child_nodes = []
@@ -192,7 +187,7 @@ def space(input_nodes, nodes_of_interest, force_iter=10):
                 reverse_node], "target": nodes_of_interest[next_node]})
         reverse_node = next_node
 
-    nodes = runForcing(temp_edges, nodes, iterations=force_iter)
+    nodes = run_forcing(temp_edges, nodes, iterations=force_iter)
 
     # update the x,y values for the forced nodes
     for node in nodes.keys():
@@ -266,8 +261,6 @@ if __name__ == "__main__":
     for i, arg in enumerate(sys.argv):
         if arg == "--force-strength":
             kwargs["force_strength"] = float(sys.argv[i + 1])
-    #    elif arg == "--2D": #currently not designed for 2D generation
-    #        kwargs["is_3d"] = False
 
     # Handle additional args
     kwargs = {"separation": 5.0, "is_3d": True}

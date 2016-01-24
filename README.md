@@ -16,10 +16,14 @@ Examples
 
 ![](http://i.imgur.com/Ll0AMBU.png)
 
+**E. coli metabolism**
+
+[![ScreenShot](http://i.imgur.com/POJlWOK.png)](https://vimeo.com/144331820)
+
 Usage
 -----
 
-To use standard parameters for everything, simply run
+To use standard parameters for everything, run
 
 ```bash
 sh draw_network.sh *adjacency_list*
@@ -39,7 +43,7 @@ For example,
 sh draw_network.sh "[[1,2],[2,3],[3,4],[4,1],[2,5],[5,4]]"
 ```
 
-will open blender with a 3D visualization of this network (see the "pinwheel" sample).
+will open blender with a 3D visualization of this network.
 
 Advanced Usage
 --------------
@@ -69,9 +73,9 @@ produces a `network.json` file containing
 ```
 
 If you want to run your own location-generating code, the Blender script will
-run on any `network.json` file with this format (Note: make sure the file
+run on any `network.json` file with this format (note: make sure the file
 is called "network.json"!). For some control of colors, you can specify a few
-common options directly in the .json by specifying a `"color"` property for each
+common options directly in the json by specifying a `"color"` property for each
 node. For example, you can edit the above to:
 
 ```json
@@ -114,7 +118,7 @@ python force_directed_layout.py --force-strength 10 --2D "[[1,2],[2,3],[3,4]]"
  * `--2D` confines the network layout to two dimensions
 
 Random layout is a useful starting point in cases where you
-want to create your own layout for artistic reasons. 
+want to create your own layout for artistic reasons.
 
 ```bash
 python random_layout.py --edge-length 15 --separation 3 --density 60 --concentric --2D "[[1,2],[2,3],[3,4]]"
@@ -126,4 +130,5 @@ python random_layout.py --edge-length 15 --separation 3 --density 60 --concentri
  * `--concentric` places the root node at the center of the network
  * `--2D` confines the network layout to two dimensions
 
-Layered layout will arrange the network according to distance from a designated node. See the [subfolder](./ecoli-metabolism-example/) for usage. 
+Layered layout will arrange the network according to distance from a designated
+node. See the [metabolism example](./examples/metabolism) for more.
