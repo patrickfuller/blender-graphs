@@ -14,7 +14,7 @@ Examples
 
 **Breadth-first search depiction**
 
-![](http://i.imgur.com/Ll0AMBU.png)
+<img src="http://i.imgur.com/Ll0AMBU.png" height="300px" />
 
 **E. coli metabolism**
 

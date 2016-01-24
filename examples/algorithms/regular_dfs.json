@@ -1,0 +1,32 @@
+{
+    "edges": [
+        { "source": "A", "target": "B" },
+        { "source": "A", "target": "C" },
+        { "source": "A", "target": "G" },
+        { "source": "A", "target": "H" },
+        { "source": "A", "target": "I" },
+        { "source": "B", "target": "J" },
+        { "source": "J", "target": "K" },
+        { "source": "J", "target": "L" },
+        { "source": "J", "target": "M" },
+        { "source": "F", "target": "N" },
+        { "source": "F", "target": "O" },
+        { "source": "I", "target": "K" },
+        { "source": "I", "target": "F" }
+    ],
+    "nodes": {
+        "A": { "location": [ -3.562, -4.307, 0.000 ], "order": 1 },
+        "B": { "location": [ -5.048, 1.902, 0.000 ], "order": 10 },
+        "C": { "location": [ -8.963, -5.387, 0.000 ], "order": 2 },
+        "F": { "location": [ 10.007, -2.531, 0.000 ], "order": 6 },
+        "G": { "location": [ -6.636, -9.052, 0.000 ], "order": 3 },
+        "H": { "location": [ -2.285, -9.581, 0.000 ], "order": 4 },
+        "I": { "location": [ 2.930, -1.430, 0.000 ], "order": 5 },
+        "J": { "location": [ -4.244, 7.951, 0.000 ], "order": 11 },
+        "K": { "location": [ 0.289, 4.115, 0.000 ], "order": 9 },
+        "L": { "location": [ -3.471, 13.351, 0.000 ], "order": 12 },
+        "M": { "location": [ -8.220, 11.718, 0.000 ], "order": 13 },
+        "N": { "location": [ 15.012, -0.683, 0.000 ], "order": 8 },
+        "O": { "location": [ 14.312, -5.708, 0.000 ], "order": 7 }
+    }
+}
