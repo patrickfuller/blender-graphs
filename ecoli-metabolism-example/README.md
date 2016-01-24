@@ -1,7 +1,7 @@
-E. coli Metabolism Example using Layered Layout
+*E. coli* Metabolism Example using Layered Layout
 ===============================================
 
-In this example, we are using the layered layout code to visualize the metabolic network of Escherichia coli. Glucose is the top most node, and everything else is layered by graph distance from it:
+In this example, we are using the layered layout code to visualize the metabolic network of *Escherichia coli*. Glucose is the top most node, and everything else is layered by graph distance from it:
 
 ![](http://i.imgur.com/csMl56p.png)
 
